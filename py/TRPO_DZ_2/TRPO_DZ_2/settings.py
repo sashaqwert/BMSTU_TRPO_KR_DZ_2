@@ -77,10 +77,15 @@ WSGI_APPLICATION = 'TRPO_DZ_2.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'dz',
+        'USER': 'dbuser',
+        'PASSWORD': 'bmstu1830',
+        'HOST': '192.168.3.3', # ВМ с PostgreSQL для тестирования
+        'PORT': 5432,
     }
 }
+
 
 
 # Password validation
