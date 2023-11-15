@@ -55,8 +55,7 @@ ROOT_URLCONF = 'TRPO_DZ_2.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,7 +80,7 @@ DATABASES = {
         'NAME': 'dz',
         'USER': 'dbuser',
         'PASSWORD': 'bmstu1830',
-        'HOST': '192.168.3.3', # ВМ с PostgreSQL для тестирования
+        'HOST': '192.168.3.3',  # ВМ с PostgreSQL для тестирования
         'PORT': 5432,
     }
 }
