@@ -23,5 +23,6 @@ class Task(models.Model):
 class Answer(models.Model):
     id_answer = models.AutoField(primary_key=True)
     answer_author = models.ForeignKey(AppUser, on_delete=models.CASCADE, verbose_name='Автор ответа')
+    answer_task = models.ForeignKey(Task, on_delete=models.CASCADE, verbose_name='Задание')
     answer_text = models.CharField('Текст ответа')
     answer_mark = models.IntegerField('Оценка', default=0)
