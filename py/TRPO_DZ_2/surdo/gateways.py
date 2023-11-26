@@ -195,12 +195,12 @@ class AnswerGateway:
         answer = Answer(id=self.id)
         answer.delete()
 
-    # поиск задачи по id задачи
+    # поиск ответа по id ответа
     @staticmethod
-    def find_task(taskId):
-        tasks = Task.objects.get(id=taskId)
-        task = TaskGateway(tasks.id, tasks.topic_name, tasks.level_task, tasks.condition, tasks.answer, tasks.photo)
-        return task
+    def find_answer(answerID):
+        answers = Answer.objects.get(id=answerID)
+        answer = AnswerGateway(answers.id, answers.answer_author, answers.answer_task, answers.answer_text, answers.answer_mark)
+        return answer
 
     # поиск задач в задании по id задания (выбираем задачи из таблицы Задачи)
     @staticmethod
