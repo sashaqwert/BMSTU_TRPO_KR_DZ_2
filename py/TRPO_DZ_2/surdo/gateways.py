@@ -62,17 +62,6 @@ class AppUserGateway:
         app_user = AppUserGateway(users.id, users.username, users.first_name, users.middle_name, users.last_name)
         return app_user
 
-    # # поиск задач в задании по id задания (выбираем задачи из таблицы Задачи)
-    # @staticmethod
-    # def find_tasksintest(testId):
-    #     tasksintest = []
-    #     tasks = list(TaskInTest.objects.filter(test=testId).values_list('task_id', flat=True))
-    #     task = Task.objects.filter(pk__in=tasks)
-    #     for el in task:
-    #         tasksintest.append(TaskGateway(el.id, el.topic_name, el.level_task, el.middle_name, el.answer, el.photo))
-    #     return tasksintest
-
-
 
 class TaskGateway:
 
