@@ -92,6 +92,12 @@ class TaskGateway:
     def get_id(self):
         return self.id
 
+    def get_author(self):
+        return self.author
+
+    def set_author(self, author):
+        self.author = author
+
     def get_title(self):
         return self.title
 
