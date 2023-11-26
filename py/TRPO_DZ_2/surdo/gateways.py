@@ -192,8 +192,8 @@ class AnswerGateway:
         answer.save()
 
     def delete(self):
-        task = Task(id=self.id)
-        task.delete()
+        answer = Answer(id=self.id)
+        answer.delete()
 
     # поиск задачи по id задачи
     @staticmethod
