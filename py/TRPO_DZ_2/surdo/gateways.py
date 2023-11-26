@@ -44,13 +44,12 @@ class AppUserGateway:
         user.save()
 
     def add(self):
-        task = Task()
-        task.topic_name = self.username
-        task.level_task = self.first_name
-        task.condition = self.middle_name
-        task.answer = self.answer
-        task.photo = self.photo
-        task.save()
+        user = AppUser()
+        user.username = self.username
+        user.first_name = self.first_name
+        user.middle_name = self.middle_name
+        user.last_name = self.last_name
+        user.save()
 
     def delete(self):
         user = Task(id=self.id)
