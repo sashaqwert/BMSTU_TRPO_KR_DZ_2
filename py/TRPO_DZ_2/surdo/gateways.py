@@ -4,11 +4,12 @@ from django.db.models import Q
 
 class AppUserGateway:
 
-    def __init__(self, id, username, first_name, middle_name, last_name, photo):
+    def __init__(self, id, username, first_name, middle_name, last_name):
         self.id = id
         self.username = username
         self.first_name = first_name
         self.middle_name = middle_name
+        self.last_name = last_name
 
     def get_id(self):
         return self.id
