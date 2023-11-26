@@ -4,9 +4,9 @@ from django.db.models import Q
 
 class TaskGateway:
 
-    def __init__(self, id, topName, lTask):
+    def __init__(self, id, title, lTask):
         self.id = id
-        self.title = topName
+        self.title = title
         self.text = lTask
 
     def get_id(self):
@@ -38,20 +38,14 @@ class TaskGateway:
 
     def update(self):
         task = Task(id=self.id)
-        task.topic_name = self.title
-        task.level_task = self.levelTask
-        task.condition = self.condition
-        task.answer = self.answer
-        task.photo = self.photo
+        task.task_title = self.title
+        task.task_text = self.text
         task.save()
 
     def add(self):
         task = Task()
-        task.topic_name = self.title
-        task.level_task = self.levelTask
-        task.condition = self.condition
-        task.answer = self.answer
-        task.photo = self.photo
+        task.task_title = self.title
+        task.task_text = self.text
         task.save()
 
     def delete(self):
@@ -62,7 +56,7 @@ class TaskGateway:
     @staticmethod
     def find_task(taskId):
         tasks = Task.objects.get(id=taskId)
-        task = TaskGateway(tasks.id, tasks.topic_name, tasks.level_task, tasks.condition, tasks.answer, tasks.photo)
+        task = TaskGateway(tasks.id, tasks.task_title, tasks.task_text)
         return task
 
     # поиск задач в задании по id задания (выбираем задачи из таблицы Задачи)
