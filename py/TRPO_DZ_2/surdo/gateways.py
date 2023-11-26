@@ -83,10 +83,11 @@ class AppUserGateway:
 
 class TaskGateway:
 
-    def __init__(self, id, title, lTask):
+    def __init__(self, id, author, title, text):
         self.id = id
+        self.author = author
         self.title = title
-        self.text = lTask
+        self.text = text
 
     def get_id(self):
         return self.id
@@ -134,10 +135,10 @@ class TaskGateway:
 
     # поиск задач в задании по id задания (выбираем задачи из таблицы Задачи)
     @staticmethod
-    def find_tasksintest(testId):
-        tasksintest = []
-        tasks = list(AppUser.objects.filter(test=testId).values_list('task_id', flat=True))
+    def find_tasksbyuser(userID):
+        tasksbyuser = []
+        tasks = list(Task.objects.filter(task_author_id=userID).values_list('task_id', flat=True))
         task = Task.objects.filter(pk__in=tasks)
         for el in task:
-            tasksintest.append(TaskGateway(el.id, el.topic_name, el.level_task, el.condition, el.answer, el.photo))
-        return tasksintest
+            tasksbyuser.append(TaskGateway(el.id, el.task_title, el.task_author, el.task_text))
+        return tasksbyuser
