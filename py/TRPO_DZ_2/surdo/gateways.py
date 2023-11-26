@@ -24,12 +24,6 @@ class TaskGateway:
     def set_text(self, text):
         self.text = text
 
-    def get_answer(self):
-        return self.answer
-
-    def set_answer(self, answ):
-        self.answer = answ
-
     def get_photo(self):
         return self.photo
 
