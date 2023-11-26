@@ -202,12 +202,12 @@ class AnswerGateway:
         answer = AnswerGateway(answers.id, answers.answer_author, answers.answer_task, answers.answer_text, answers.answer_mark)
         return answer
 
-    # поиск задач в задании по id задания (выбираем задачи из таблицы Задачи)
+    # поиск ответов на задание по id задания (выбираем ответы из таблицы Ответы)
     @staticmethod
-    def find_tasksintest(testId):
-        tasksintest = []
-        tasks = list(TaskInTest.objects.filter(test=testId).values_list('task_id', flat=True))
-        task = Task.objects.filter(pk__in=tasks)
-        for el in task:
-            tasksintest.append(TaskGateway(el.id, el.topic_name, el.level_task, el.condition, el.answer, el.photo))
-        return tasksintest
+    def find_answersontask(taskId):
+        answersontask = []
+        answers = list(Answer.objects.filter(answer_task_id=taskId).values_list('answer_id', flat=True))
+        answer = Answer.objects.filter(pk__in=answers)
+        for el in answer:
+            answersontask.append(AnswerGateway(el.id, el.answer_author, el.answer_task, el.answer_text, el.answer_mark))
+        return answersontask
