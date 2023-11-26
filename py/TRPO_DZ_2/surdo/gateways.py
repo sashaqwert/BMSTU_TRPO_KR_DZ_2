@@ -133,3 +133,89 @@ class TaskGateway:
         for el in task:
             tasksbyuser.append(TaskGateway(el.id, el.task_author, el.task_title, el.task_text))
         return tasksbyuser
+
+
+##############################################################################################
+##############################################################################################
+
+
+class AnswerGateway:
+
+    def __init__(self, id, author, task, text, mark):
+        self.id = id
+        self.answer_author = author
+        self.task = task
+        self.answer_text = text
+        self.mark = mark
+
+    def get_id(self):
+        return self.id
+
+    def get_topic_name(self):
+        return self.topicName
+
+    def set_topic_name(self, topname):
+        self.topicName = topname
+
+    def get_level_task(self):
+        return self.levelTask
+
+    def set_level_task(self, ltask):
+        self.topicName = ltask
+
+    def get_condition(self):
+        return self.condition
+
+    def set_condition(self, cond):
+        self.condition = cond
+
+    def get_answer(self):
+        return self.answer
+
+    def set_answer(self, answ):
+        self.answer = answ
+
+    def get_photo(self):
+        return self.photo
+
+    def set_photo(self, photo):
+        self.photo = photo
+
+    def update(self):
+        task = Task(id=self.id)
+        task.topic_name = self.topicName
+        task.level_task = self.levelTask
+        task.condition = self.condition
+        task.answer = self.answer
+        task.photo = self.photo
+        task.save()
+
+    def add(self):
+        task = Task()
+        task.topic_name = self.topicName
+        task.level_task = self.levelTask
+        task.condition = self.condition
+        task.answer = self.answer
+        task.photo = self.photo
+        task.save()
+
+    def delete(self):
+        task = Task(id=self.id)
+        task.delete()
+
+    # поиск задачи по id задачи
+    @staticmethod
+    def find_task(taskId):
+        tasks = Task.objects.get(id=taskId)
+        task = TaskGateway(tasks.id, tasks.topic_name, tasks.level_task, tasks.condition, tasks.answer, tasks.photo)
+        return task
+
+    # поиск задач в задании по id задания (выбираем задачи из таблицы Задачи)
+    @staticmethod
+    def find_tasksintest(testId):
+        tasksintest = []
+        tasks = list(TaskInTest.objects.filter(test=testId).values_list('task_id', flat=True))
+        task = Task.objects.filter(pk__in=tasks)
+        for el in task:
+            tasksintest.append(TaskGateway(el.id, el.topic_name, el.level_task, el.condition, el.answer, el.photo))
+        return tasksintest
