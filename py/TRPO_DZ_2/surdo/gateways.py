@@ -184,13 +184,12 @@ class AnswerGateway:
         answer.save()
 
     def add(self):
-        task = Task()
-        task.topic_name = self.topicName
-        task.level_task = self.levelTask
-        task.condition = self.condition
-        task.answer = self.answer
-        task.photo = self.photo
-        task.save()
+        answer = Answer()
+        answer.answer_author = self.answer_author
+        answer.answer_task = self.task
+        answer.answer_text = self.answer_text
+        answer.answer_mark = self.mark
+        answer.save()
 
     def delete(self):
         task = Task(id=self.id)
