@@ -163,17 +163,17 @@ class AnswerGateway:
     def set_task(self, task):
         self.task = task
 
-    def get_condition(self):
-        return self.condition
+    def get_answer_text(self):
+        return self.answer_text
 
-    def set_condition(self, cond):
-        self.condition = cond
+    def set_answer_text(self, text):
+        self.answer_text = text
 
-    def get_answer(self):
-        return self.answer
+    def get_mark(self):
+        return self.mark
 
-    def set_answer(self, answ):
-        self.answer = answ
+    def set_mark(self, mark):
+        self.mark = mark
 
     def get_photo(self):
         return self.photo
