@@ -26,29 +26,22 @@ class AppUserGateway:
     def get_middle_name(self):
         return self.middle_name
 
-    def set_middle_name(self, cond):
-        self.middle_name = cond
+    def set_middle_name(self, middle_name):
+        self.middle_name = middle_name
 
-    def get_answer(self):
-        return self.answer
+    def get_last_name(self):
+        return self.last_name
 
-    def set_answer(self, answ):
-        self.answer = answ
-
-    def get_photo(self):
-        return self.photo
-
-    def set_photo(self, photo):
-        self.photo = photo
+    def set_last_name(self, last_name):
+        self.last_name = last_name
 
     def update(self):
-        task = Task(id=self.id)
-        task.topic_name = self.username
-        task.level_task = self.first_name
-        task.condition = self.middle_name
-        task.answer = self.answer
-        task.photo = self.photo
-        task.save()
+        user = AppUser(id=self.id)
+        user.username = self.username
+        user.first_name = self.first_name
+        user.middle_name = self.middle_name
+        user.last_name = self.last_name
+        user.save()
 
     def add(self):
         task = Task()
