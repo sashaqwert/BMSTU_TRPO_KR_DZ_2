@@ -95,8 +95,8 @@ class TaskGateway:
     def get_title(self):
         return self.title
 
-    def set_title(self, topname):
-        self.title = topname
+    def set_title(self, title):
+        self.title = title
 
     def get_text(self):
         return self.text
