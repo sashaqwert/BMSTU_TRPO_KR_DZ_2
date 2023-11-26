@@ -151,17 +151,17 @@ class AnswerGateway:
     def get_id(self):
         return self.id
 
-    def get_topic_name(self):
-        return self.topicName
+    def get_author(self):
+        return self.answer_author
 
-    def set_topic_name(self, topname):
-        self.topicName = topname
+    def set_author(self, author):
+        self.answer_author = author
 
-    def get_level_task(self):
-        return self.levelTask
+    def get_task(self):
+        return self.task
 
-    def set_level_task(self, ltask):
-        self.topicName = ltask
+    def set_task(self, task):
+        self.task = task
 
     def get_condition(self):
         return self.condition
