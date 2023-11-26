@@ -1,7 +1,7 @@
 from django.db import models
 
 
-# Create your models here.
+# Данный файл считаем просто списком таблиц БД. Ссылаемся на него с самого нижнего уровня.
 
 # Имитация таблицы пользователя (для паттернов)
 class AppUser(models.Model):
