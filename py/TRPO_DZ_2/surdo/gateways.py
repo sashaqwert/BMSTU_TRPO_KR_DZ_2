@@ -175,20 +175,13 @@ class AnswerGateway:
     def set_mark(self, mark):
         self.mark = mark
 
-    def get_photo(self):
-        return self.photo
-
-    def set_photo(self, photo):
-        self.photo = photo
-
     def update(self):
-        task = Task(id=self.id)
-        task.topic_name = self.topicName
-        task.level_task = self.levelTask
-        task.condition = self.condition
-        task.answer = self.answer
-        task.photo = self.photo
-        task.save()
+        answer = Answer(id=self.id)
+        answer.answer_author = self.answer_author
+        answer.answer_task = self.task
+        answer.answer_text = self.answer_text
+        answer.answer_mark = self.mark
+        answer.save()
 
     def add(self):
         task = Task()
