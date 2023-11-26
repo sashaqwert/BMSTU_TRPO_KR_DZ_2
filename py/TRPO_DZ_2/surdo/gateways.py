@@ -114,19 +114,19 @@ class TaskGateway:
         task = Task(id=self.id)
         task.delete()
 
-    # поиск задачи по id задачи
+    # поиск задания по id задания
     @staticmethod
     def find_task(taskId):
         tasks = Task.objects.get(id=taskId)
         task = TaskGateway(tasks.id, tasks.task_author, tasks.task_title, tasks.task_text)
         return task
 
-    # поиск задач в задании по id задания (выбираем задачи из таблицы Задачи)
+    # поиск заданий, созданных пользователем (выбираем задания из таблицы Задания)
     @staticmethod
     def find_tasksbyuser(userID):
         tasksbyuser = []
         tasks = list(Task.objects.filter(task_author_id=userID).values_list('task_id', flat=True))
         task = Task.objects.filter(pk__in=tasks)
         for el in task:
-            tasksbyuser.append(TaskGateway(el.id, el.task_title, el.task_author, el.task_text))
+            tasksbyuser.append(TaskGateway(el.id, el.task_author, el.task_title, el.task_text))
         return tasksbyuser
