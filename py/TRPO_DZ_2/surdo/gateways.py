@@ -53,8 +53,8 @@ class AppUserGateway:
         task.save()
 
     def delete(self):
-        task = Task(id=self.id)
-        task.delete()
+        user = Task(id=self.id)
+        user.delete()
 
     # поиск пользователя по id пользователя
     @staticmethod
