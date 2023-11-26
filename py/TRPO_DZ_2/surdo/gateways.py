@@ -62,12 +62,12 @@ class AppUserGateway:
         task = Task(id=self.id)
         task.delete()
 
-    # поиск задачи по id задачи
+    # поиск пользователя по id пользователя
     @staticmethod
-    def find_task(taskId):
-        tasks = Task.objects.get(id=taskId)
-        task = TaskGateway(tasks.id, tasks.topic_name, tasks.level_task, tasks.middle_name, tasks.answer, tasks.photo)
-        return task
+    def find_user(userID):
+        users = AppUser.objects.get(id=userID)
+        app_user = AppUserGateway(users.id, users.username, users.first_name, users.middle_name, users.last_name)
+        return app_user
 
     # # поиск задач в задании по id задания (выбираем задачи из таблицы Задачи)
     # @staticmethod
