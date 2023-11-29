@@ -58,9 +58,12 @@ class AppUserGateway:
     # поиск пользователя по id пользователя
     @staticmethod
     def find_user(userID):
-        users = AppUser.objects.get(id=userID)
-        app_user = AppUserGateway(users.id, users.username, users.first_name, users.middle_name, users.last_name)
-        return app_user
+        try:
+            users = AppUser.objects.get(id=userID)
+            app_user = AppUserGateway(users.id, users.username, users.first_name, users.middle_name, users.last_name)
+            return app_user
+        except:  # SQL exception / нет в БД
+            return None
 
     @staticmethod
     def find_user_by_username(username: str):
