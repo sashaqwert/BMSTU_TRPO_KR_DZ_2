@@ -208,7 +208,8 @@ class AnswerGateway:
     @staticmethod
     def find_answer(answerID):
         answers = Answer.objects.get(id=answerID)
-        answer = AnswerGateway(answers.id, answers.answer_author, answers.answer_task, answers.answer_text, answers.answer_mark)
+        answer = AnswerGateway(answers.id, answers.answer_author, answers.answer_task, answers.answer_text,
+                               answers.answer_mark)
         return answer
 
     # поиск ответов на задание по id задания (выбираем ответы из таблицы Ответы)
