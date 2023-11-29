@@ -1,7 +1,7 @@
 from surdo.gateways import AppUserGateway, TaskGateway, AnswerGateway
 
 
-class AppUserModel:
+class AppUserModule:
     @staticmethod
     def check_exists(id_: int = -1, username: str = ''):
         if id_ != -1:
@@ -44,7 +44,7 @@ class AppUserModel:
         return AppUserGateway.find_user(id).delete()
 
 
-class TaskModel:
+class TaskModule:
     @staticmethod
     def check_exists(id_: int = -1):
         return TaskGateway.find_task(id_) is None  # Вызываем метод Row Data Gateway
