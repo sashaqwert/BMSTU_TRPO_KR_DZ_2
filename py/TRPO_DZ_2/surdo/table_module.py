@@ -19,6 +19,10 @@ class AppUserModel:
         return AppUserGateway.find_user(id).username
 
     @staticmethod
+    def get_id_by_username(username: str):
+        return AppUserGateway.find_user_by_username(username).id
+
+    @staticmethod
     def get_first_name(id: int):
         return AppUserGateway.find_user(id).first_name
 
@@ -29,10 +33,6 @@ class AppUserModel:
     @staticmethod
     def get_last_name(id: int):
         return AppUserGateway.find_user(id).last_name
-
-    @staticmethod
-    def get_id_by_username(username: str):
-        return AppUserGateway.find_user_by_username(username).id
 
 
 class TaskModel:
