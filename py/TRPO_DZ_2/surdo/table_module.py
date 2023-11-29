@@ -39,6 +39,10 @@ class AppUserModel:
     def get_last_name(id: int):
         return AppUserGateway.find_user(id).last_name
 
+    @staticmethod
+    def delete(id: int):
+        return AppUserGateway.find_user(id).delete()
+
 
 class TaskModel:
     pass
