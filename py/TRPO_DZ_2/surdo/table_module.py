@@ -12,7 +12,8 @@ class AppUserModule:
     def insert(id, username, first_name='', middle_name='', last_name=''):
         if not AppUserModule.check_exists(id):
             raise 'Запись с этим ID уже существует.'
-        AppUserGateway(id, username, first_name, middle_name, last_name)
+        gateway = AppUserGateway(id, username, first_name, middle_name, last_name)
+        gateway.add()
 
     @staticmethod
     def get_username_by_id(id: int):
@@ -52,6 +53,11 @@ class TaskModule:
     @staticmethod
     def get_user_tasks(user_id: int):
         return TaskGateway.find_tasksbyuser(user_id)
+
+    @staticmethod
+    def addd_task(id: int, author: int, title: str, text: str):
+        gateway = TaskGateway(id, author, title, text)
+        gateway.add()
 
 
 class AnswerModule:
