@@ -10,7 +10,7 @@ class AppUserModule:
 
     @staticmethod
     def insert(id, username, first_name='', middle_name='', last_name=''):
-        if not AppUserModel.check_exists(id):
+        if not AppUserModule.check_exists(id):
             raise 'Запись с этим ID уже существует.'
         AppUserGateway(id, username, first_name, middle_name, last_name)
 
