@@ -31,6 +31,11 @@ class AppUserModel:
         return AppUserGateway.find_user(id).middle_name
 
     @staticmethod
+    def get_fio(id: int):  # Типовой запрос
+        user = AppUserGateway.find_user(id)
+        return f'{user.last_name} {user.middle_name} {user.first_name}'
+
+    @staticmethod
     def get_last_name(id: int):
         return AppUserGateway.find_user(id).last_name
 
