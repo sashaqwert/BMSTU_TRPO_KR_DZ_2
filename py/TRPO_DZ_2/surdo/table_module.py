@@ -45,8 +45,12 @@ class AppUserModel:
 
 
 class TaskModel:
-    pass
+    @staticmethod
+    def check_exists(id_: int = -1):
+        return TaskGateway.find_task(id_) is None  # Вызываем метод Row Data Gateway
 
 
 class AnswerModule:
-    pass
+    @staticmethod
+    def check_exists(id_: int = -1):
+        return AnswerGateway.find_answer(id_) is None  # Вызываем метод Row Data Gateway
