@@ -49,6 +49,10 @@ class TaskModule:
     def check_exists(id_: int = -1):
         return TaskGateway.find_task(id_) is None  # Вызываем метод Row Data Gateway
 
+    @staticmethod
+    def get_user_tasks(user_id: int):
+        return TaskGateway.find_tasksbyuser(user_id)
+
 
 class AnswerModule:
     @staticmethod
