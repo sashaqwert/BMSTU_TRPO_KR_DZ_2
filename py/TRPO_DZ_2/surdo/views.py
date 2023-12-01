@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from surdo import forms, serializers
-from surdo.table_module import AppUserModule
+from surdo.table_module import AppUserModule, TaskModule
 
 
 # Create your views here.
@@ -24,3 +24,9 @@ class main_page(APIView):
 def user_page(request, *args, **kwargs):
     if request.method == 'GET':
         return render(request, 'user.html', {'title': kwargs.get('username')})
+
+
+class tasks(APIView):
+    def get(self, request, *args, **kwargs):
+        t = TaskModule.get_user_tasks(AppUserModule.get_id_by_username(kwargs.get('username')))
+        return Response([{'author': 1, 'text': 'abcd'}])
