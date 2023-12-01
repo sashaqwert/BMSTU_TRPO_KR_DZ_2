@@ -21,6 +21,6 @@ class main_page(APIView):
         return Response('Несуществующий пользователь', status=status.HTTP_404_NOT_FOUND)
 
 
-def user_page(request, args, **kwargs):
+def user_page(request, *args, **kwargs):
     if request.method == 'GET':
         return render(request, 'user.html', {'title': kwargs.get('username')})
