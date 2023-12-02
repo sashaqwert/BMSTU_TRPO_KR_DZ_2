@@ -23,5 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('', views.main_page),
-    path('user/<username>/', views.user_page)
+    path('user/<username>/', views.user_page),
+    path('user/<username>/task/', views.Tasks.as_view())
 ]

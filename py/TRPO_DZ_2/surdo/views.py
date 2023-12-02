@@ -25,7 +25,7 @@ def user_page(request, *args, **kwargs):
         return render(request, 'user.html', {'title': kwargs.get('username')})
 
 
-class tasks(APIView):
+class Tasks(APIView):
     def get(self, request, *args, **kwargs):
         t = TaskModule.get_user_tasks(AppUserModule.get_id_by_username(kwargs.get('username')))
         return Response([{'author': 1, 'text': 'abcd'}])
