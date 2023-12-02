@@ -12,8 +12,8 @@ def main_page(request):
     if request.method == 'POST':
         form = forms.LoginForm(request.POST)
         if form.is_valid():
-            if AppUserModule.check_exists(form.username):  # Обращаемся к паттерну бизнес-логики
-                return redirect(f'/user/{form.username}/', permanent=False)
+            if AppUserModule.check_exists(form.data['username']):  # Обращаемся к паттерну бизнес-логики
+                return redirect(f'/user/{form.data["username"]}/', permanent=False)
     else:
         form = forms.LoginForm
         return render(request, 'login.html', {'title': 'Авторизация', 'form': form})
