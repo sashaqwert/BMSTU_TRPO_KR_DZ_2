@@ -6,7 +6,8 @@
 </head>
 <body>
 <center><h1>{{ title }}</h1></center><hr>
-{{ content }}
+    {% block content %}
+    {% endblock content %}
 <hr>
 <a href="/">Выход</a>
 </body>
