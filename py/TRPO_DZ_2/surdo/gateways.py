@@ -68,7 +68,7 @@ class AppUserGateway:
     @staticmethod
     def find_user_by_username(username: str):
         users = AppUser.objects.get(username=username)
-        app_user = AppUserGateway(users.id, users.username, users.first_name, users.middle_name, users.last_name)
+        app_user = AppUserGateway(users.id_user, users.username, users.first_name, users.middle_name, users.last_name)
         return app_user
 
 
