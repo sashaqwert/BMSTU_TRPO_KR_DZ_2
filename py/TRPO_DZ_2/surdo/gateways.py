@@ -137,7 +137,7 @@ class TaskGateway:
     @staticmethod
     def find_tasksbyuser(userID):
         tasksbyuser = []
-        tasks = list(Task.objects.filter(task_author_id=userID).values_list('task_id', flat=True))
+        tasks = list(Task.objects.filter(task_author_id=userID).values_list('id_task', flat=True))
         task = Task.objects.filter(pk__in=tasks)
         for el in task:
             tasksbyuser.append(TaskGateway(el.id, el.task_author, el.task_title, el.task_text))
