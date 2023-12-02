@@ -8,17 +8,16 @@ from surdo.table_module import AppUserModule, TaskModule
 
 
 # Create your views here.
-class main_page(APIView):
-    """
-    {"username": "admin"}
-    """
+def main_page(request):
+    if request.method == 'POST':
+        form = forms.LoginForm(request.POST)
+        if form.is_valid():
+            if AppUserModule.check_exists(form.username):  # Обращаемся к паттерну бизнес-логики
+                return redirect(f'/user/{form.username}/', permanent=False)
+    else:
+        form = forms.LoginForm
+        return render(request, 'login.html', {'title': 'Авторизация', 'form': form})
 
-    def post(self, request, *args, **kwargs):
-        serializer = serializers.loginSerializer(data=request.data)
-        if serializer.is_valid():
-            if AppUserModule.check_exists(serializer.data['username']):  # Обращаемся к паттерну бизнес-логики
-                return redirect(f'/user/{serializer.data["username"]}/', permanent=False)
-        return Response('Несуществующий пользователь', status=status.HTTP_404_NOT_FOUND)
 
 
 def user_page(request, *args, **kwargs):
