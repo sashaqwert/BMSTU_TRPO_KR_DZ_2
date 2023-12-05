@@ -19,6 +19,7 @@
             Автор: {{ t.get_author }}<br>
             Название: {{ t.get_title }}<br>
             Текст: {{ t.get_text }}<br>
+            <a href="./{{ t.id }}/">Изменить / удалить</a><br>
         {% endfor %}
     {% else %}
         Список пуст
