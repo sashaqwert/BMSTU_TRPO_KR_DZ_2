@@ -32,4 +32,8 @@ def task_list_page(request, *args, **kwargs):
             author_id = form.data['author_id']
     else:
         add_form = forms.TaskAddForm
-        return render(request, 'tasks.html', {'title': 'Задания', 'add_form': add_form})
+        task_list = TaskModule.get_user_tasks(AppUserModule.get_id_by_username(kwargs.get('username')))
+        if task_list.count() == 0:
+            return render(request, 'tasks.html', {'title': 'Задания', 'add_form': add_form})
+        else:
+            return render(request, 'tasks.html', {'title': 'Задания', 'add_form': add_form, 'task_list': task_list})

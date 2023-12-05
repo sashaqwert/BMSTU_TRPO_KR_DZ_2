@@ -13,7 +13,8 @@
     <hr>
     <h4>Список заданий</h4><br>
     {% if task_list %}
-        TODO...
+        {% for t in task_list %}
+        {% endfor %}
     {% else %}
         Список пуст
     {% endif %}
