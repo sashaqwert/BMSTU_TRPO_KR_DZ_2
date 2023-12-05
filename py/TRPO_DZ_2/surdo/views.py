@@ -25,7 +25,11 @@ def user_page(request, *args, **kwargs):
         return render(request, 'user.html', {'title': kwargs.get('username')})
 
 
-class Tasks(APIView):
-    def get(self, request, *args, **kwargs):
-        t = TaskModule.get_user_tasks(AppUserModule.get_id_by_username(kwargs.get('username')))
-        return Response([{'author': 1, 'text': 'abcd'}])
+def task_list_page(request, *args, **kwargs):
+    if request.method == 'POST':
+        form = forms.TaskAddForm(request.POST)
+        if form.is_valid():
+            author_id = form.data['author_id']
+    else:
+        add_form = forms.TaskAddForm
+        return render(request, 'tasks.html', {'title': 'Задания', 'add_form': add_form})
