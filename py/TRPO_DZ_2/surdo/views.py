@@ -40,10 +40,9 @@ def task_list_page(request, *args, **kwargs):
             if AppUserModule.check_exists(author_id):
                 raise 'Несуществующий пользователь'
             TaskModule.insert(random.Random().randint(1, 10000), author_id, title, text)
+    add_form = forms.TaskAddForm
+    task_list = TaskModule.get_user_tasks(AppUserModule.get_id_by_username(kwargs.get('username')))
+    if len(task_list) == 0:
+        return render(request, 'tasks.html', {'title': 'Задания', 'add_form': add_form})
     else:
-        add_form = forms.TaskAddForm
-        task_list = TaskModule.get_user_tasks(AppUserModule.get_id_by_username(kwargs.get('username')))
-        if len(task_list) == 0:
-            return render(request, 'tasks.html', {'title': 'Задания', 'add_form': add_form})
-        else:
-            return render(request, 'tasks.html', {'title': 'Задания', 'add_form': add_form, 'task_list': task_list})
+        return render(request, 'tasks.html', {'title': 'Задания', 'add_form': add_form, 'task_list': task_list})
