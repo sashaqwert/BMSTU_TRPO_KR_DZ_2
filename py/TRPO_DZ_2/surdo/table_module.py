@@ -5,8 +5,10 @@ class AppUserModule:
     @staticmethod
     def check_exists(id_: int = -1, username: str = ''):
         if id_ != -1:
-            return AppUserGateway.find_user(id_) is None  # Вызываем метод Row Data Gateway
-        return AppUserGateway.find_user_by_username(username) is None
+            g = AppUserGateway.find_user(id_)  # Вызываем метод Row Data Gateway
+        else:
+            g = AppUserGateway.find_user_by_username(username)
+        return g is None
 
     @staticmethod
     def insert(id, username, first_name='', middle_name='', last_name=''):
