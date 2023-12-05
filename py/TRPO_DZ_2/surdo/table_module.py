@@ -8,7 +8,7 @@ class AppUserModule:
             g = AppUserGateway.find_user(id_)  # Вызываем метод Row Data Gateway
         else:
             g = AppUserGateway.find_user_by_username(username)
-        return g is None
+        return bool(g is None)
 
     @staticmethod
     def insert(id, username, first_name='', middle_name='', last_name=''):
