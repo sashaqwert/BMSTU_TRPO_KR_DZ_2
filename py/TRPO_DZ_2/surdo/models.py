@@ -11,6 +11,9 @@ class AppUser(models.Model):
     middle_name = models.CharField(verbose_name='Отчество', default='', max_length=255)
     last_name = models.CharField(verbose_name='Фамилия', default='', max_length=255)
 
+    def __str__(self):
+        return f"AppUser{{id_user={self.id_user}, username={self.username}}}"
+
 
 class Task(models.Model):
     id_task = models.AutoField(primary_key=True)
