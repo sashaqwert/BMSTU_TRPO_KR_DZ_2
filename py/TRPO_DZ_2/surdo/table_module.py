@@ -57,10 +57,18 @@ class TaskModule:
         return TaskGateway.find_tasksbyuser(user_id)
 
     @staticmethod
+    def get_by_id(id: int):
+        return TaskGateway.find_task(id)
+
+    @staticmethod
     def insert(id: int, author: int, title: str, text: str):
         gateway = TaskGateway(id, author, title, text)
         gateway.add()
 
+    @staticmethod
+    def update(id: int, author: int, title: str, text: str):
+        gateway = TaskGateway(id, author, title, text)
+        gateway.update()
 
 class AnswerModule:
     @staticmethod

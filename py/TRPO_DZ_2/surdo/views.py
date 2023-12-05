@@ -46,3 +46,20 @@ def task_list_page(request, *args, **kwargs):
         return render(request, 'tasks.html', {'title': 'Задания', 'add_form': add_form})
     else:
         return render(request, 'tasks.html', {'title': 'Задания', 'add_form': add_form, 'task_list': task_list})
+
+
+def task_page(request, *args, **kwargs):
+    task_id = kwargs.get('task_id', -1)
+    if request.method == 'POST':
+        form = forms.TaskAddForm(request.POST)
+        if form.is_valid():
+            author_id = form.data['author_id']
+            title = form.data['title']
+            text = form.data['text']
+            # Проверяем существование пользователя
+            if AppUserModule.check_exists(author_id):
+                raise 'Несуществующий пользователь'
+            TaskModule.update(task_id, author_id, title, text)
+    add_form = forms.TaskAddForm
+    task = TaskModule.get_by_id(task_id)
+    return render(request, 'task.html', {'title': task.title, 'add_form': add_form, 'task': task})
