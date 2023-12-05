@@ -4,9 +4,10 @@
     <h4>Новое задание</h4><br>
     <form action="." method="post">
         {% csrf_token %}
-        {{ add_form }}<hr>
+        {{ add_form }}
         <input type="submit" value="Submit">
     </form>
+    <hr>
     <h4>Список заданий</h4><br>
     {% if task_list %}
         TODO...
