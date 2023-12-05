@@ -33,7 +33,7 @@ def task_list_page(request, *args, **kwargs):
     else:
         add_form = forms.TaskAddForm
         task_list = TaskModule.get_user_tasks(AppUserModule.get_id_by_username(kwargs.get('username')))
-        if task_list.count() == 0:
+        if len(task_list) == 0:
             return render(request, 'tasks.html', {'title': 'Задания', 'add_form': add_form})
         else:
             return render(request, 'tasks.html', {'title': 'Задания', 'add_form': add_form, 'task_list': task_list})
