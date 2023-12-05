@@ -14,6 +14,10 @@
     <h4>Список заданий</h4><br>
     {% if task_list %}
         {% for t in task_list %}
+            ----------<br>
+            id: {{ t.get_id }}<br>
+            Автор: {{ t.get_author }}
+            Текст: {{ t.get_text }}<br>
         {% endfor %}
     {% else %}
         Список пуст

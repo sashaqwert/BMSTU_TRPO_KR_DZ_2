@@ -71,6 +71,9 @@ class AppUserGateway:
         app_user: AppUserGateway = AppUserGateway(users.id_user, users.username, users.first_name, users.middle_name, users.last_name)
         return app_user
 
+    def __str__(self):
+        return self.username
+
 
 ##############################################################################################
 ##############################################################################################
