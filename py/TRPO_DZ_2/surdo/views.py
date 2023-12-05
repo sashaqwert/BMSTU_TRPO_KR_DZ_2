@@ -1,3 +1,5 @@
+import random
+
 from django.shortcuts import render, redirect
 from rest_framework import status
 from rest_framework.response import Response
@@ -12,7 +14,7 @@ def main_page(request):
     if request.method == 'POST':
         form = forms.LoginForm(request.POST)
         if form.is_valid():
-            if AppUserModule.check_exists(form.data['username']):  # Обращаемся к паттерну бизнес-логики
+            if AppUserModule.check_exists(username=form.data['username']):  # Обращаемся к паттерну бизнес-логики
                 return redirect(f'/user/{form.data["username"]}/', permanent=False)
     else:
         form = forms.LoginForm
@@ -30,6 +32,12 @@ def task_list_page(request, *args, **kwargs):
         form = forms.TaskAddForm(request.POST)
         if form.is_valid():
             author_id = form.data['author_id']
+            title = form.data['title']
+            text = form.data['text']
+            # Проверяем существование пользователя
+            if AppUserModule.check_exists(author_id):
+                raise 'Несуществующий пользователь'
+            TaskModule.insert(random.Random().randint(1, 10000), author_id, title, text)
     else:
         add_form = forms.TaskAddForm
         task_list = TaskModule.get_user_tasks(AppUserModule.get_id_by_username(kwargs.get('username')))

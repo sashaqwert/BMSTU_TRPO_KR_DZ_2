@@ -55,7 +55,7 @@ class TaskModule:
         return TaskGateway.find_tasksbyuser(user_id)
 
     @staticmethod
-    def addd_task(id: int, author: int, title: str, text: str):
+    def insert(id: int, author: int, title: str, text: str):
         gateway = TaskGateway(id, author, title, text)
         gateway.add()
 
