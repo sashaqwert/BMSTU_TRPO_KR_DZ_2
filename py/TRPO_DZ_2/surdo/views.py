@@ -16,6 +16,7 @@ def main_page(request):
         if form.is_valid():
             if AppUserModule.check_exists(username=form.data['username']):  # Обращаемся к паттерну бизнес-логики
                 return redirect(f'/user/{form.data["username"]}/', permanent=False)
+            raise "Пользователь не найден"
     else:
         form = forms.LoginForm
         return render(request, 'login.html', {'title': 'Авторизация', 'form': form})
