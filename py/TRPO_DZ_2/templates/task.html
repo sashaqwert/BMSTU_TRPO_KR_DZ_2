@@ -12,5 +12,5 @@
         Автор: {{ task.get_author }}<br>
         Текст: {{ task.get_text }}<br>
     {% endif %}<br>
-    <a href="." data-method="delete">Удалить</a>
+    <button class="delete" data-target="." data-method="DELETE" data-disabled="true">Удалить</button>
 {% endblock content %}
