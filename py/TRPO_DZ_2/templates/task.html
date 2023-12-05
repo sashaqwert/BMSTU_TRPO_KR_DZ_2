@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if task %}
+        id: {{ task.get_id }}<br>
+        Автор: {{ task.get_author }}<br>
+        Название: {{ task.get_title }}<br>
+        Текст: {{ task.get_text }}<br>
+    {% endif %}
+{% endblock content %}
