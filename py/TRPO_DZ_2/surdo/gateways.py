@@ -140,7 +140,7 @@ class TaskGateway:
         tasks = list(Task.objects.filter(task_author_id=userID).values_list('id_task', flat=True))
         task = Task.objects.filter(pk__in=tasks)
         for el in task:
-            tasksbyuser.append(TaskGateway(el.id, el.task_author, el.task_title, el.task_text))
+            tasksbyuser.append(TaskGateway(el.id_task, el.task_author, el.task_title, el.task_text))
         return tasksbyuser
 
 
