@@ -14,7 +14,8 @@ def main_page(request):
     if request.method == 'POST':
         form = forms.LoginForm(request.POST)
         if form.is_valid():
-            if AppUserModule.check_exists(username=form.data['username']):  # Обращаемся к паттерну бизнес-логики
+            exists = AppUserModule.check_exists(username=form.data['username'])  # Обращаемся к паттерну бизнес-логики
+            if exists:
                 return redirect(f'/user/{form.data["username"]}/', permanent=False)
             raise "Пользователь не найден"
     else:
