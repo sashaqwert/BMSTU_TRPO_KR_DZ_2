@@ -62,4 +62,4 @@ def task_page(request, *args, **kwargs):
             TaskModule.update(task_id, author_id, title, text)
     add_form = forms.TaskAddForm
     task = TaskModule.get_by_id(task_id)
-    return render(request, 'task.html', {'title': task.title, 'add_form': add_form, 'task': task})
+    return render(request, 'task.html', {'title': task.title, 'update_form': add_form, 'task': task})

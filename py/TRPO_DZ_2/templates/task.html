@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <form action="." method="post">
+        {% csrf_token %}
+        {{ update_form }}
+        <input type="submit" value="Submit">
+    </form>
+    <hr>
     {% if task %}
         id: {{ task.get_id }}<br>
         Автор: {{ task.get_author }}<br>
-        Название: {{ task.get_title }}<br>
         Текст: {{ task.get_text }}<br>
     {% endif %}
 {% endblock content %}
