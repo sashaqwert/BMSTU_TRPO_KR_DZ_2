@@ -23,7 +23,6 @@ def main_page(request):
         return render(request, 'login.html', {'title': 'Авторизация', 'form': form})
 
 
-
 def user_page(request, *args, **kwargs):
     if request.method == 'GET':
         return render(request, 'user.html', {'title': kwargs.get('username')})
