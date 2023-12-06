@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from surdo import forms, serializers
-from surdo.table_module import AppUserModule, TaskModule
+from surdo.table_module import AppUserModule, TaskModule, AnswerModule
 
 
 # Create your views here.
@@ -66,3 +66,22 @@ def task_page(request, *args, **kwargs):
         return redirect('../', permanent=False)
     add_form = forms.TaskAddForm
     return render(request, 'task.html', {'title': task.title, 'update_form': add_form, 'task': task})
+
+
+def answer_list_page(request, *args, **kwargs):
+    if request.method == 'POST':
+        form = forms.AnswerAddForm(request.POST)
+        if form.is_valid():
+            author_id = form.data['author_id']
+            task_id = form.data['task_id']
+            text = form.data['text']
+            # Проверяем существование пользователя
+            if AppUserModule.check_exists(author_id):
+                raise 'Несуществующий пользователь'
+            AnswerModule.insert(random.Random().randint(1, 10000), author_id, task_id, text)
+    add_form = forms.AnswerAddForm
+    answer_list = AnswerModule.get_user_answers(AppUserModule.get_id_by_username(kwargs.get('username')))
+    if len(answer_list) == 0:
+        return render(request, 'answers.html', {'title': 'Ответы', 'add_form': add_form})
+    else:
+        return render(request, 'answers.html', {'title': 'Ответы', 'add_form': add_form, 'answer_list': answer_list})
