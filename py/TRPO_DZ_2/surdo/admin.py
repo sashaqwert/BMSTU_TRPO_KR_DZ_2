@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from surdo.models import AppUser, Task
+from surdo.models import AppUser, Task, Answer
 
 
 # Register your models here.
@@ -12,4 +12,9 @@ class AppUserAdmin(admin.ModelAdmin):
 
 @admin.register(Task)
 class TaskAdmin(admin.ModelAdmin):
+    pass
+
+
+@admin.register(Answer)
+class AnswerAdmin(admin.ModelAdmin):
     pass
