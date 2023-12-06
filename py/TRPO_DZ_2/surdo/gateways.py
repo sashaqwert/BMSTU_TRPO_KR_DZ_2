@@ -225,7 +225,7 @@ class AnswerGateway:
             answersontask.append(AnswerGateway(el.id, el.answer_author, el.answer_task, el.answer_text, el.answer_mark))
         return answersontask
 
-    def find_answersbyuser(userId):
+    def find_answersbyuser(userId: int):
         answersbyuser = []
         answers = list(Answer.objects.filter(answer_author_id=userId).values_list('answer_id', flat=True))
         answer = Answer.objects.filter(pk__in=answers)
