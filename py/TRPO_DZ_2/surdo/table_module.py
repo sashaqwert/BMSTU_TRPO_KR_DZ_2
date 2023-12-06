@@ -80,3 +80,7 @@ class AnswerModule:
     def insert(id: int, author: int, task: int, text: int, mark: int):
         gateway = AnswerGateway(id, author, task, text, mark)
         gateway.add()
+
+    @staticmethod
+    def get_user_answers(user_id: int):
+        return AnswerGateway.find_answersbyuser(user_id)
