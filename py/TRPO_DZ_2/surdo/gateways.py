@@ -197,8 +197,8 @@ class AnswerGateway:
 
     def add(self):
         answer = Answer()
-        answer.answer_author = self.answer_author
-        answer.answer_task = self.task
+        answer.answer_author_id = self.answer_author
+        answer.answer_task_id = self.task
         answer.answer_text = self.answer_text
         answer.answer_mark = self.mark
         answer.save()
