@@ -17,8 +17,9 @@
             ----------<br>
             id: {{ a.get_id }}<br>
             Автор: {{ a.get_author }}<br>
-            Название: {{ a.get_task }}<br>
+            Задание: {{ a.get_task }}<br>
             Текст: {{ a.get_text }}<br>
+            Оценка: {{ a.get_mark }}
             <a href="./{{ a.id }}/">Изменить / удалить</a><br>
         {% endfor %}
     {% else %}
