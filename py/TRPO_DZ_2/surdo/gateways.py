@@ -219,7 +219,7 @@ class AnswerGateway:
     @staticmethod
     def find_answersontask(taskId):
         answersontask = []
-        answers = list(Answer.objects.filter(answer_task_id=taskId).values_list('answer_id', flat=True))
+        answers = list(Answer.objects.filter(answer_task_id=taskId).values_list('id_answer', flat=True))
         answer = Answer.objects.filter(pk__in=answers)
         for el in answer:
             answersontask.append(AnswerGateway(el.id, el.answer_author, el.answer_task, el.answer_text, el.answer_mark))
@@ -227,7 +227,7 @@ class AnswerGateway:
 
     def find_answersbyuser(userId: int):
         answersbyuser = []
-        answers = list(Answer.objects.filter(answer_author_id=userId).values_list('answer_id', flat=True))
+        answers = list(Answer.objects.filter(answer_author_id=userId).values_list('id_answer', flat=True))
         answer = Answer.objects.filter(pk__in=answers)
         for el in answer:
             answersbyuser.append(AnswerGateway(el.id, el.answer_author, el.answer_task, el.answer_text, el.answer_mark))
