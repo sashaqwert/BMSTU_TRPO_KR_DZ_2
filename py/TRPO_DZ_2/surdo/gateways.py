@@ -230,6 +230,6 @@ class AnswerGateway:
         answers = list(Answer.objects.filter(answer_author_id=userId).values_list('id_answer', flat=True))
         answer = Answer.objects.filter(pk__in=answers)
         for el in answer:
-            answersbyuser.append(AnswerGateway(el.id, el.answer_author, el.answer_task, el.answer_text, el.answer_mark))
+            answersbyuser.append(AnswerGateway(el.id_answer, el.answer_author, el.answer_task, el.answer_text, el.answer_mark))
         return answersbyuser
 
