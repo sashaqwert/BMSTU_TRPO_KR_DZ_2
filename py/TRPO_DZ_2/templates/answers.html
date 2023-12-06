@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h4>Новый ответ</h4><br>
+    <details>
+    <summary>Открыть форму</summary>
+        <form action="." method="post">
+            {% csrf_token %}
+            {{ add_form }}
+            <input type="submit" value="Submit">
+        </form>
+    </details>
+    <hr>
+    <h4>Список заданий</h4><br>
+    {% if answer_list %}
+        {% for a in answer_list %}
+            ----------<br>
+            id: {{ a.get_id }}<br>
+            Автор: {{ a.get_author }}<br>
+            Название: {{ a.get_task }}<br>
+            Текст: {{ a.get_text }}<br>
+            <a href="./{{ a.id }}/">Изменить / удалить</a><br>
+        {% endfor %}
+    {% else %}
+        Список пуст
+    {% endif %}
+{% endblock content %}
