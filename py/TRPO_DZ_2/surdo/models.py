@@ -21,6 +21,9 @@ class Task(models.Model):
     task_text = models.CharField('Текст задания', default='', max_length=255)
     task_author = models.ForeignKey(AppUser, on_delete=models.CASCADE, verbose_name='Автор задания', default=1)
 
+    def __str__(self):
+        return f"Task{{id_task={self.id_task}, task_title={self.task_title}, task_author{self.task_author}}}"
+
 
 class Answer(models.Model):
     id_answer = models.AutoField(primary_key=True)
