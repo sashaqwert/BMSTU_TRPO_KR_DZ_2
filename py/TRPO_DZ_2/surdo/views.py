@@ -78,7 +78,7 @@ def answer_list_page(request, *args, **kwargs):
             # Проверяем существование пользователя
             if AppUserModule.check_exists(author_id):
                 raise 'Несуществующий пользователь'
-            AnswerModule.insert(random.Random().randint(1, 10000), author_id, task_id, text)
+            AnswerModule.insert(random.Random().randint(1, 10000), author_id, task_id, text, -1)
     add_form = forms.AnswerAddForm
     answer_list = AnswerModule.get_user_answers(AppUserModule.get_id_by_username(kwargs.get('username')))
     if len(answer_list) == 0:
