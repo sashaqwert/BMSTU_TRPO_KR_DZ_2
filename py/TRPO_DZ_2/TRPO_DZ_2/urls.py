@@ -25,5 +25,6 @@ urlpatterns = [
     path('', views.main_page),
     path('user/<username>/', views.user_page),
     path('user/<username>/task/', views.task_list_page),
-    path('user/<username>/task/<task_id>/', views.task_page)
+    path('user/<username>/task/<task_id>/', views.task_page),
+    path('user/<username>/answer/', views.answer_list_page)
 ]
