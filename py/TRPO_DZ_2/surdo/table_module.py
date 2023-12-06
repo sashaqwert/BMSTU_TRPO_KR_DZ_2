@@ -70,7 +70,13 @@ class TaskModule:
         gateway = TaskGateway(id, author, title, text)
         gateway.update()
 
+
 class AnswerModule:
     @staticmethod
     def check_exists(id_: int = -1):
         return AnswerGateway.find_answer(id_) is None  # Вызываем метод Row Data Gateway
+
+    @staticmethod
+    def insert(id: int, author: int, task: int, text: int, mark: int):
+        gateway = AnswerGateway(id, author, task, text, mark)
+        gateway.add()
