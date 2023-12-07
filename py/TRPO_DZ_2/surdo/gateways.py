@@ -1,5 +1,4 @@
 from .models import AppUser, Task, Answer
-from django.db.models import Q
 
 
 class AppUserGateway:
@@ -106,12 +105,6 @@ class TaskGateway:
 
     def set_text(self, text):
         self.text = text
-
-    def get_photo(self):
-        return self.photo
-
-    def set_photo(self, photo):
-        self.photo = photo
 
     def update(self):
         task = Task(id=self.id)
