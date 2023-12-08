@@ -89,8 +89,9 @@ def answer_list_page(request, *args, **kwargs):
 
 
 def answer_page(request, *args, **kwargs):
+    answer_id = kwargs.get('answer_id')
     if request.method == 'POST':
-        form = forms.AnswerAddForm(request.POST)
+        form = forms.AnswerUpdateForm(request.POST)
         if form.is_valid():
             author_id = form.data['author_id']
             task_id = form.data['task_id']
@@ -98,7 +99,7 @@ def answer_page(request, *args, **kwargs):
             mark = form.data['mark']
             if not AppUserModule.check_exists(author_id):
                 raise 'Несуществующий пользователь'
-            AnswerModule.update_answer(author_id, task_id, text, mark)
+            AnswerModule.update(answer_id, author_id, task_id, text, mark)
     update_form = forms.AnswerAddForm
     answer = AnswerModule.get_user_answers(AppUserModule.get_id_by_username(kwargs.get('answer_id')))
     return render(request, 'answer.html', {'title': 'Ответы', 'update_form': update_form, 'answer': answer})

@@ -90,7 +90,7 @@ class AnswerModule:
         return AnswerGateway.find_answersbyuser(user_id)
 
     @staticmethod
-    def update_answer(id: int, author: int, task: int, text: str, mark: int):
+    def update(id: int, author: int, task: int, text: str, mark: int):
         gateway = AnswerGateway(id, author, task, text, mark)
         gateway.update()
 
