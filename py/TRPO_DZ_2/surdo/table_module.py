@@ -84,3 +84,7 @@ class AnswerModule:
     @staticmethod
     def get_user_answers(user_id: int):
         return AnswerGateway.find_answersbyuser(user_id)
+
+    @staticmethod
+    def delete(id: int):
+        return AnswerGateway.find_answer(id).delete()
