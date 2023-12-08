@@ -59,10 +59,10 @@ def task_page(request, *args, **kwargs):
             if AppUserModule.check_exists(author_id):
                 raise 'Несуществующий пользователь'
             TaskModule.update(task_id, author_id, title, text)
-    task = TaskModule.get_by_id(task_id)
     if request.method == 'DELETE':
-        task.delete()
+        TaskModule.delete(task_id)
         return redirect('../', permanent=False)
+    task = TaskModule.get_by_id(task_id)
     add_form = forms.TaskAddForm
     return render(request, 'task.html', {'title': task.title, 'update_form': add_form, 'task': task})
 
