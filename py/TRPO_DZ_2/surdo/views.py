@@ -75,7 +75,7 @@ def answer_list_page(request, *args, **kwargs):
             task_id = form.data['task_id']
             text = form.data['text']
             # Проверяем существование пользователя
-            if AppUserModule.check_exists(author_id):
+            if not AppUserModule.check_exists(author_id):
                 raise 'Несуществующий пользователь'
             if TaskModule.check_exists(task_id):
                 raise 'Несуществующее задание'
@@ -86,3 +86,15 @@ def answer_list_page(request, *args, **kwargs):
         return render(request, 'answers.html', {'title': 'Ответы', 'add_form': add_form})
     else:
         return render(request, 'answers.html', {'title': 'Ответы', 'add_form': add_form, 'answer_list': answer_list})
+
+
+def answer_page(request):
+    if request.method == 'POST':
+        form = forms.AnswerAddForm(request.POST)
+        if form.is_valid():
+            author_id = form.data['author_id']
+            task_id = form.data['task_id']
+            text = form.data['text']
+            mark = form.data['mark']
+            if not AppUserModule.check_exists(author_id):
+                raise 'Несуществующий пользователь'
