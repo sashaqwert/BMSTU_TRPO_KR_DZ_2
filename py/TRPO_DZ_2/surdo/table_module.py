@@ -70,6 +70,10 @@ class TaskModule:
         gateway = TaskGateway(id, author, title, text)
         gateway.update()
 
+    @staticmethod
+    def delete(id: int):
+        return TaskGateway.find_task(id).delete()
+
 
 class AnswerModule:
     @staticmethod
