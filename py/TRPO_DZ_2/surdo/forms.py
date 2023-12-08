@@ -15,3 +15,10 @@ class AnswerAddForm(forms.Form):
     author_id = forms.IntegerField(label='ID автора')
     task_id = forms.IntegerField(label='ID задания')
     text = forms.CharField(widget=forms.Textarea, label='Текст ответа')
+
+
+class AnswerUpdateForm(forms.Form):
+    author_id = forms.IntegerField(label='ID автора')
+    task_id = forms.IntegerField(label='ID задания')
+    text = forms.CharField(widget=forms.Textarea, label='Текст ответа')
+    mark = forms.IntegerField(label='Оценка', required=True)
