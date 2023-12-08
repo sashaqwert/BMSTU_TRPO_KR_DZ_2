@@ -100,6 +100,8 @@ def answer_page(request, *args, **kwargs):
             if not AppUserModule.check_exists(author_id):
                 raise 'Несуществующий пользователь'
             AnswerModule.update(answer_id, author_id, task_id, text, mark)
+    if request.method == 'DELETE':
+        AnswerModule.delete(answer_id)
     update_form = forms.AnswerAddForm
     answer = AnswerModule.get_user_answers(AppUserModule.get_id_by_username(kwargs.get('answer_id')))
     return render(request, 'answer.html', {'title': 'Ответы', 'update_form': update_form, 'answer': answer})
