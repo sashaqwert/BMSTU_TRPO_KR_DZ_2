@@ -50,7 +50,7 @@ class AppUserModule:
 class TaskModule:
     @staticmethod
     def check_exists(id_: int = -1):
-        return TaskGateway.find_task(id_) is None  # Вызываем метод Row Data Gateway
+        return TaskGateway.get_by_id(id_) is None  # Вызываем метод Row Data Gateway
 
     @staticmethod
     def get_user_tasks(user_id: int):
@@ -58,7 +58,7 @@ class TaskModule:
 
     @staticmethod
     def get_by_id(id: int):
-        return TaskGateway.find_task(id)
+        return TaskGateway.get_by_id(id)
 
     @staticmethod
     def insert(id: int, author: int, title: str, text: str):
@@ -72,7 +72,7 @@ class TaskModule:
 
     @staticmethod
     def delete(id: int):
-        return TaskGateway.find_task(id).delete()
+        return TaskGateway.get_by_id(id).delete()
 
 
 class AnswerModule:

@@ -124,7 +124,7 @@ class TaskGateway:
 
     # поиск задания по id задания
     @staticmethod
-    def find_task(taskId):
+    def get_by_id(taskId):
         tasks = Task.objects.get(id_task=taskId)
         task = TaskGateway(tasks.id_task, tasks.task_author, tasks.task_title, tasks.task_text)
         return task
