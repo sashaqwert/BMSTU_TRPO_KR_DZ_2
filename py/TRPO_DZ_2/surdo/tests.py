@@ -14,6 +14,6 @@ class TestUser(TestCase):
 
     def test_create(self):
         table_module.AppUserModule.insert(1, 'admin', 'Александр', 'Евгеньевич', 'Чиварзин')
-        obj = models.AppUser.objects.get(id=1)
+        obj = models.AppUser.objects.get(id_user=1)
         self.assertEqual(obj.username, 'admin')
         self.assertEqual(obj.id_user, 1)
