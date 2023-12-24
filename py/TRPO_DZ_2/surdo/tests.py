@@ -8,6 +8,8 @@ import surdo.gateways as gateways
 import surdo.table_module as table_module
 
 # Create your tests here.
+
+
 class TestUserCreate(TestCase):
     def setUp(self):
         pass  # Пустая БД

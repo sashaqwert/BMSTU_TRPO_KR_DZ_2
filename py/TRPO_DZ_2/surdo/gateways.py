@@ -61,7 +61,7 @@ class AppUserGateway:
             users = AppUser.objects.get(id_user=userID)
             app_user = AppUserGateway(users.id, users.username, users.first_name, users.middle_name, users.last_name)
             return app_user
-        except:  # SQL exception / нет в БД
+        except AppUser.DoesNotExist:  # SQL exception / нет в БД
             return None
 
     @staticmethod
