@@ -23,3 +23,7 @@ class TestUserCreate(TestCase):
 
     def test_checkExists(self):
         self.assertFalse(table_module.AppUserModule.check_exists(1))
+
+    def test_wrong_user(self):
+        with self.assertRaises(ValueError):
+            gateways.AppUserGateway.find_user(-5)  # Отрицательных ID не бывает
