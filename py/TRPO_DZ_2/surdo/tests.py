@@ -27,3 +27,11 @@ class TestUserCreate(TestCase):
     def test_wrong_user(self):
         with self.assertRaises(ValueError):
             gateways.AppUserGateway.find_user(-5)  # Отрицательных ID не бывает
+
+
+class TestUserModel(TestCase):
+    def setUp(self):
+        models.AppUser.objects.create(username='test', first_name='testF', middle_name='testM', last_name='testL')
+
+    def test_str(self):
+        self.assertContains(str(str(models.AppUser.objects.get(username='test'))), 'test')  # Подстрока в строке
