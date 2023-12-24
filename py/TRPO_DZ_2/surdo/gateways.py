@@ -58,7 +58,7 @@ class AppUserGateway:
     @staticmethod
     def find_user(userID):
         try:
-            users = AppUser.objects.get(id=userID)
+            users = AppUser.objects.get(id_user=userID)
             app_user = AppUserGateway(users.id, users.username, users.first_name, users.middle_name, users.last_name)
             return app_user
         except:  # SQL exception / нет в БД
