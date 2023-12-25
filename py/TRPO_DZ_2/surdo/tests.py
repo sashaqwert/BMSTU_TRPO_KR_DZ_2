@@ -136,3 +136,14 @@ class TestTaskModel(TestCase):
         t = models.Task.objects.create(task_author_id=1, task_title='Test', task_text='SuperTest')
         self.assertEqual(str(t),
                          'Task{id_task=1, task_title=Test, task_authorAppUser{id_user=1, username=user}}')
+
+
+class TestTaskGatewayInsert(TestCase):
+    def setUp(self):
+        models.AppUser.objects.create(
+            username='chivarzin', first_name='Александр', middle_name='Евгеньевич', last_name='Чиварзин')
+
+    def test_insert(self):
+        tg = gateways.TaskGateway(id=1, title='Test', text='SuperTest', author=1)
+        tg.add()
+        self.assertEqual(gateways.TaskGateway.get_by_id(1).id, 1)
