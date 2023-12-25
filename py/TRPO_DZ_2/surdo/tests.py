@@ -99,3 +99,13 @@ class TestAppUserGateway(TestCase):
         ug = gateways.AppUserGateway.find_user(1)
         ug.delete()
         self.assertIsNone(gateways.AppUserGateway.find_user(1))
+
+
+class TestAppUserModule(TestCase):
+    def setUp(self):
+        models.AppUser.objects.create(
+            username='user', first_name='Александр', middle_name='Евгеньевич', last_name='Чиварзин')
+
+    def test_wrong_insert(self):
+        with self.assertRaises(ValueError):
+            table_module.AppUserModule.insert(1, 'any', 'any', 'any', 'any')

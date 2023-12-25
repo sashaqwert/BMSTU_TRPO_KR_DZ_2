@@ -13,7 +13,7 @@ class AppUserModule:
     @staticmethod
     def insert(id, username, first_name='', middle_name='', last_name=''):
         if AppUserModule.check_exists(id):
-            raise 'Запись с этим ID уже существует.'
+            raise ValueError('Запись с этим ID уже существует.')
         gateway = AppUserGateway(id, username, first_name, middle_name, last_name)
         gateway.add()
 
