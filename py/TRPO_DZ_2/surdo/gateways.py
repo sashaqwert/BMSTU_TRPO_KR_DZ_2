@@ -22,6 +22,9 @@ class AppUserGateway:
     def get_first_name(self):
         return self.first_name
 
+    def set_first_name(self, first_name):
+        self.first_name = first_name
+
     def get_middle_name(self):
         return self.middle_name
 
