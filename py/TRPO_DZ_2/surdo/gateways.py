@@ -61,7 +61,7 @@ class AppUserGateway:
             raise ValueError("ID должен быть больше либо равен 0")  # код для ЛР №8
         try:  # Нормальный код
             users = AppUser.objects.get(id_user=userID)
-            app_user = AppUserGateway(users.id, users.username, users.first_name, users.middle_name, users.last_name)
+            app_user = AppUserGateway(users.id_user, users.username, users.first_name, users.middle_name, users.last_name)
             return app_user
         except AppUser.DoesNotExist:  # SQL exception / нет в БД
             return None

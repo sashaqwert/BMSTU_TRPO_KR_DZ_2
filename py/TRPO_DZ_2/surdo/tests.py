@@ -44,3 +44,12 @@ class TestUserModel(TestCase):
         self.assertEqual(u.last_name, 'testL')
         self.assertEqual(u.username, 'test')
         self.assertEqual(u.id_user, 1)
+
+
+class TestAppUserGateway(TestCase):
+    def setUp(self):
+        models.AppUser.objects.create(username='test', first_name='testF', middle_name='testM', last_name='testL')
+
+    def test_get_id(self):
+        ug = gateways.AppUserGateway.find_user(1)
+        self.assertEqual(ug.get_id(), 1)
