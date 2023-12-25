@@ -112,7 +112,7 @@ class TaskGateway:
         self.text = text
 
     def update(self):
-        task = Task(id=self.id)
+        task = Task(id_task=self.id)
         task.task_title = self.title
         task.task_text = self.text
         task.save()
