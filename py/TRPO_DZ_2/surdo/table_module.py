@@ -36,7 +36,7 @@ class AppUserModule:
     @staticmethod
     def get_fio(id: int):  # Типовой запрос
         user = AppUserGateway.find_user(id)
-        return f'{user.last_name} {user.middle_name} {user.first_name}'
+        return f'{user.first_name} {user.middle_name} {user.last_name}'
 
     @staticmethod
     def get_last_name(id: int):
