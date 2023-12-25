@@ -164,6 +164,15 @@ class TestTaskGateway(TestCase):
         self.assertEqual(tg.get_title(), 'Test')
         self.assertEqual(tg.get_text(), 'SuperTest')
 
+    def test_update(self):
+        tg = gateways.TaskGateway.get_by_id(1)
+        tg.task_title = 'changed title'
+        tg.task_text = 'changed text'
+        tg.update()
+        t = models.Task.objects.get(id_task=1)
+        self.assertEqual(t.task_title, 'changed title')
+        self.assertEqual(t.task_text, 'changed text')
+
 
 class TestTaskListPage(TestCase):
     def setUp(self):
