@@ -89,7 +89,7 @@ class TestAppUserGateway(TestCase):
         ug.last_name = 'changedL'
         ug.username = 'changedU'
         ug.update()
-        obj = models.AppUser.objects.get(id_user=ug.id_user)
+        obj = models.AppUser.objects.get(id=ug.id_user)
         self.assertEqual(obj.first_name, 'changedF')
         self.assertEqual(obj.middle_name, 'changedM')
         self.assertEqual(obj.last_name, 'changedL')
