@@ -117,3 +117,6 @@ class TestAppUserModule(TestCase):
 
     def test_get(self):
         self.assertEqual(table_module.AppUserModule.get_fio(1), 'Александр Евгеньевич Чиварзин')
+        self.assertEqual(table_module.AppUserModule.get_first_name(1), 'Александр')
+        self.assertEqual(table_module.AppUserModule.get_middle_name(1), 'Евгеньевич')
+        self.assertEqual(table_module.AppUserModule.get_last_name(1), 'Чиварзин')
