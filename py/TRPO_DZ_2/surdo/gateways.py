@@ -124,7 +124,7 @@ class TaskGateway:
         task.save()
 
     def delete(self):
-        task = Task(id=self.id)
+        task = Task(id_task=self.id)
         task.delete()
 
     # поиск задания по id задания
