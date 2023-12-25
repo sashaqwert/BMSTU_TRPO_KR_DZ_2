@@ -34,4 +34,5 @@ class TestUserModel(TestCase):
         models.AppUser.objects.create(username='test', first_name='testF', middle_name='testM', last_name='testL')
 
     def test_str(self):
-        self.assertContains(str(str(models.AppUser.objects.get(username='test'))), 'test')  # Подстрока в строке
+        # AppUser.__str__()
+        self.assertEqual(str(str(models.AppUser.objects.get(username='test'))), 'AppUser{id_user=1, username=test}')
