@@ -120,3 +120,8 @@ class TestAppUserModule(TestCase):
         self.assertEqual(table_module.AppUserModule.get_first_name(1), 'Александр')
         self.assertEqual(table_module.AppUserModule.get_middle_name(1), 'Евгеньевич')
         self.assertEqual(table_module.AppUserModule.get_last_name(1), 'Чиварзин')
+
+    def test_delete(self):
+        self.assertTrue(table_module.AppUserModule.check_exists(1))
+        table_module.AppUserModule.delete(1)
+        self.assertFalse(table_module.AppUserModule.check_exists(1))
