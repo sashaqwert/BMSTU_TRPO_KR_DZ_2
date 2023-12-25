@@ -125,3 +125,14 @@ class TestAppUserModule(TestCase):
         self.assertTrue(table_module.AppUserModule.check_exists(1))
         table_module.AppUserModule.delete(1)
         self.assertFalse(table_module.AppUserModule.check_exists(1))
+
+
+class TestTaskModel(TestCase):
+    def setUp(self):
+        models.AppUser.objects.create(
+            username='user', first_name='Александр', middle_name='Евгеньевич', last_name='Чиварзин')
+
+    def test_str(self):
+        t = models.Task.objects.create(task_author_id=1, task_title='Test', task_text='SuperTest')
+        self.assertEqual(str(t),
+                         'Task{id_task=1, task_title=Test, task_authorAppUser{id_user=1, username=user}}')
