@@ -57,3 +57,23 @@ class TestAppUserGateway(TestCase):
         self.assertEqual(ug.get_middle_name(), 'testM')
         self.assertEqual(ug.get_last_name(), 'testL')
         self.assertEqual(ug.get_username(), 'test')
+
+    def test_set_first_name(self):
+        ug = gateways.AppUserGateway.find_user(1)
+        ug.set_first_name('changedF')
+        self.assertEqual(ug.first_name, 'changedF')
+
+    def test_set_middle_name(self):
+        ug = gateways.AppUserGateway.find_user(1)
+        ug.set_middle_name('changedM')
+        self.assertEqual(ug.middle_name, 'changedM')
+
+    def test_set_last_name(self):
+        ug = gateways.AppUserGateway.find_user(1)
+        ug.set_last_name('changedL')
+        self.assertEqual(ug.last_name, 'changedL')
+
+    def test_set_username(self):
+        ug = gateways.AppUserGateway.find_user(1)
+        ug.set_username('changedU')
+        self.assertEqual(ug.username, 'changedU')
