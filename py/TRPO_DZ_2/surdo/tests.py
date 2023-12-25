@@ -50,6 +50,10 @@ class TestAppUserGateway(TestCase):
     def setUp(self):
         models.AppUser.objects.create(username='test', first_name='testF', middle_name='testM', last_name='testL')
 
-    def test_get_id(self):
+    def test_get_attrs(self):
         ug = gateways.AppUserGateway.find_user(1)
         self.assertEqual(ug.get_id(), 1)
+        self.assertEqual(ug.get_first_name(), 'testF')
+        self.assertEqual(ug.get_middle_name(), 'testM')
+        self.assertEqual(ug.get_last_name(), 'testL')
+        self.assertEqual(ug.get_username(), 'test')
