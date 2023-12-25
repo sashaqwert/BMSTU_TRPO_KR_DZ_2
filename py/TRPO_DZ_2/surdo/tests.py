@@ -77,3 +77,7 @@ class TestAppUserGateway(TestCase):
         ug = gateways.AppUserGateway.find_user(1)
         ug.set_username('changedU')
         self.assertEqual(ug.username, 'changedU')
+
+    def test_str(self):
+        ug = gateways.AppUserGateway.find_user(1)
+        self.assertEqual(str(ug), 'test')
