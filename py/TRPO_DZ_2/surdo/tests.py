@@ -3,9 +3,12 @@
 """
 
 from django.test import TestCase
+from rest_framework import request
+
 import surdo.models as models
 import surdo.gateways as gateways
 import surdo.table_module as table_module
+import surdo.views as views
 
 # Create your tests here.
 
@@ -160,3 +163,14 @@ class TestTaskGateway(TestCase):
         self.assertEqual(tg.get_author().username, 'chivarzin')
         self.assertEqual(tg.get_title(), 'Test')
         self.assertEqual(tg.get_text(), 'SuperTest')
+
+
+class TestTaskListPage(TestCase):
+    def setUp(self):
+        models.AppUser.objects.create(
+            username='chivarzin', first_name='Александр', middle_name='Евгеньевич', last_name='Чиварзин')
+        models.Task.objects.create(task_title='Test', task_text='SuperTest')
+
+    def test_get(self):
+        self.assertIn('SuperTest',
+                      views.task_list_page(request=request.HttpRequest(), username='chivarzin').content.__str__())
