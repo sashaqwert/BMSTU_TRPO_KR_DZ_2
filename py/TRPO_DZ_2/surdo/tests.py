@@ -36,3 +36,11 @@ class TestUserModel(TestCase):
     def test_str(self):
         # AppUser.__str__()
         self.assertEqual(str(str(models.AppUser.objects.get(username='test'))), 'AppUser{id_user=1, username=test}')
+
+    def test_attrs(self):
+        u = models.AppUser.objects.get(username='test')
+        self.assertEqual(u.first_name, 'testF')
+        self.assertEqual(u.middle_name, 'testM')
+        self.assertEqual(u.last_name, 'testL')
+        self.assertEqual(u.username, 'test')
+        self.assertEqual(u.id_user, 1)
