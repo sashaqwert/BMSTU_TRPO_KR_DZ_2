@@ -38,7 +38,7 @@ class AppUserGateway:
         self.last_name = last_name
 
     def update(self):
-        user = AppUser(id=self.id)
+        user = AppUser(id_user=self.id)
         user.username = self.username
         user.first_name = self.first_name
         user.middle_name = self.middle_name
