@@ -108,4 +108,9 @@ class TestAppUserModule(TestCase):
 
     def test_wrong_insert(self):
         with self.assertRaises(ValueError):
+            # Здесь важен только ID
             table_module.AppUserModule.insert(1, 'any', 'any', 'any', 'any')
+
+    def test_get_id_username(self):
+        self.assertEqual(table_module.AppUserModule.get_id_by_username('user'), 1)
+        self.assertEqual(table_module.AppUserModule.get_username_by_id(1), 'user')
