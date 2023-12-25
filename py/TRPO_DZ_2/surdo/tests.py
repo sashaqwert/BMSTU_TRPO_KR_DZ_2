@@ -172,6 +172,12 @@ class TestTaskGateway(TestCase):
         self.assertEqual(tg.task_title, 'changed title')
         self.assertEqual(tg.task_text, 'changed text')
 
+    def test_delete(self):
+        self.assertEqual(models.Task.objects.all().count(), 1)
+        tg = gateways.TaskGateway.get_by_id(1)
+        tg.delete()
+        self.assertEqual(models.Task.objects.all().count(), 0)
+
 
 class TestTaskListPage(TestCase):
     def setUp(self):
