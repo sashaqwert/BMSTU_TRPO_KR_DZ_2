@@ -81,3 +81,21 @@ class TestAppUserGateway(TestCase):
     def test_str(self):
         ug = gateways.AppUserGateway.find_user(1)
         self.assertEqual(str(ug), 'test')
+
+    def test_update(self):
+        ug = gateways.AppUserGateway.find_user(1)
+        ug.first_name = 'changedF'
+        ug.middle_name = 'changedM'
+        ug.last_name = 'changedL'
+        ug.username = 'changedU'
+        ug.update()
+        obj = models.AppUser.objects.get(id_user=ug.id_user)
+        self.assertEqual(obj.first_name, 'changedF')
+        self.assertEqual(obj.middle_name, 'changedM')
+        self.assertEqual(obj.last_name, 'changedL')
+        self.assertEqual(obj.username, 'changedU')
+
+    def test_delete(self):
+        ug = gateways.AppUserGateway.find_user(1)
+        ug.delete()
+        self.assertIsNone(gateways.AppUserGateway.find_user(1))

@@ -54,7 +54,7 @@ class AppUserGateway:
         user.save()
 
     def delete(self):
-        user = AppUser(id=self.id)
+        user = AppUser(id_user=self.id)
         user.delete()
 
     # поиск пользователя по id пользователя
