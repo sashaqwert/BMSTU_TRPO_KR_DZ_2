@@ -18,8 +18,11 @@ def main():
     g = AnswerGateway(-1, 1, 1, "", 1)
     g.attach(ob)
     print('Нажмите CTRL + C для выхода')
-    while(True):
-        pass
+    try:
+        while True:
+            pass
+    except KeyboardInterrupt:
+        print('Наблюдение остановлено!')
     pass
 
 
