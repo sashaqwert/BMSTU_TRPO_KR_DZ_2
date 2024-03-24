@@ -244,6 +244,12 @@ class AnswerGateway(Subject):  # Издатель в паттерне "Набл�
             answersontask.append(AnswerGateway(el.id_answer, el.answer_author, el.answer_task, el.answer_text, el.answer_mark))
         return answersontask
 
+    @staticmethod
+    def get_by_id(answerId):
+        answers = Answer.objects.get(id_answer=answerId)
+        answer = AnswerGateway(answers.id_answer, answers.answer_author, answers.answer_task, answers.answer_text, answers.answer_mark)
+        return answer
+
     def find_answersbyuser(userId: int):
         answersbyuser = []
         answers = list(Answer.objects.filter(answer_author_id=userId).values_list('id_answer', flat=True))
