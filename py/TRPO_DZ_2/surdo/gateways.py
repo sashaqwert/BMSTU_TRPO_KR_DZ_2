@@ -160,13 +160,21 @@ class AnswerGateway(Subject):  # Издатель в паттерне "Набл�
     def detach(self, observer: Observer) -> None:
         self._observers.remove(observer)
 
+    def notify(self) -> None:
+        """
+        Запуск обновления в каждом подписчике.
+        """
+
+        print("Subject: Notifying observers...")
+        for observer in self._observers:
+            observer.update(self)
+
     def __init__(self, id, author, task, text, mark):
         self.id = id
         self.answer_author = author
         self.task = task
         self.answer_text = text
         self.mark = mark
-        self._observers = []
 
     def get_id(self):
         return self.id
@@ -210,6 +218,7 @@ class AnswerGateway(Subject):  # Издатель в паттерне "Набл�
         answer.answer_text = self.answer_text
         answer.answer_mark = self.mark
         answer.save()
+        self.notify()  # Отправка сообщения подписчикам наблюдателя
 
     def delete(self):
         answer = Answer(id=self.id)
