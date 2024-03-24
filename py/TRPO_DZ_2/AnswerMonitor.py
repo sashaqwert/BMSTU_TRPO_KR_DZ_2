@@ -3,6 +3,7 @@
 Команда для запуска: python manage.py shell < AnswerMonitor.py
 """
 from surdo.Observer import Observer, Subject
+from surdo.gateways import AnswerGateway
 from surdo.models import Answer
 
 
@@ -14,6 +15,11 @@ class AnswerObserver(Observer):
 
 def main():
     ob = AnswerObserver()
+    g = AnswerGateway(-1, 1, 1, "", 1)
+    g.attach(ob)
+    print('Нажмите CTRL + C для выхода')
+    while(True):
+        pass
     pass
 
 
