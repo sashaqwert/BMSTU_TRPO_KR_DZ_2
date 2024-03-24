@@ -8,7 +8,6 @@ from surdo.Observer import Subject, Observer
 class AnswerObserver(Observer):
     def update(self, subject: Subject) -> None:
         from surdo.models import Answer
-        from surdo.models import Answer
         count = Answer.objects.filter(answer_mark__isnull=True).count()
         print(f'Непроверенных ответов: {count}')
 
