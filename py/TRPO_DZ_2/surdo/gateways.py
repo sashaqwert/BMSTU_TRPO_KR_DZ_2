@@ -1,3 +1,4 @@
+from .Observer import Subject, Observer
 from .models import AppUser, Task, Answer
 
 
@@ -149,7 +150,15 @@ class TaskGateway:
 ##############################################################################################
 
 
-class AnswerGateway:
+class AnswerGateway(Subject):  # Издатель в паттерне "Наблюдатель"
+    _observers: list[Observer] = []
+
+    def attach(self, observer: Observer) -> None:
+        print("Subject: Attached an observer.")
+        self._observers.append(observer)
+
+    def detach(self, observer: Observer) -> None:
+        self._observers.remove(observer)
 
     def __init__(self, id, author, task, text, mark):
         self.id = id
@@ -157,6 +166,7 @@ class AnswerGateway:
         self.task = task
         self.answer_text = text
         self.mark = mark
+        self._observers = []
 
     def get_id(self):
         return self.id
