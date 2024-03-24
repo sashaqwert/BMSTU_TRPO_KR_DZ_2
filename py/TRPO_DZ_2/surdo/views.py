@@ -103,5 +103,5 @@ def answer_page(request, *args, **kwargs):
     if request.method == 'DELETE':
         AnswerModule.delete(answer_id)
     update_form = forms.AnswerAddForm
-    answer = AnswerModule.get_user_answers(AppUserModule.get_id_by_username(kwargs.get('answer_id')))
+    answer = AnswerModule.get_user_answers(AppUserModule.get_id_by_username(kwargs.get('username')))
     return render(request, 'answer.html', {'title': 'Ответы', 'update_form': update_form, 'answer': answer})
