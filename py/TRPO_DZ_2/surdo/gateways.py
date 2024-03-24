@@ -210,6 +210,7 @@ class AnswerGateway(Subject):  # Издатель в паттерне "Набл�
         answer.answer_text = self.answer_text
         answer.answer_mark = self.mark
         answer.save()
+        self.notify()  # Отправка сообщения подписчикам наблюдателя
 
     def add(self):
         answer = Answer()
@@ -223,6 +224,7 @@ class AnswerGateway(Subject):  # Издатель в паттерне "Набл�
     def delete(self):
         answer = Answer(id=self.id)
         answer.delete()
+        self.notify()  # Отправка сообщения подписчикам наблюдателя
 
     # поиск ответа по id ответа
     @staticmethod
